@@ -19,4 +19,105 @@ Você deve criar as suas classes de acordo com o diagrama abaixo:
 3. O método **InstalarAplicativo** deve ser sobrescrito na classe Nokia e iPhone, pois ambos possuem diferentes maneiras de instalar um aplicativo.
 
 ## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+
+### Iphone.cs
+
+* Implementado Herança da classe "Smartphone" e adicionado override no método "InstalarAplicativo".
+
+```csharp namespace DesafioPOO.Models
+{
+    // TODO: Herdar da classe "Smartphone"
+    public class Iphone : Smartphone
+    {
+        // TODO: Sobrescrever o método "InstalarAplicativo"
+        public Iphone(string numero, string modelo, string imei, int memoria) : base (numero, modelo, imei, memoria)
+        {
+            
+        }
+        public override void InstalarAplicativo(string nomeApp)
+        {
+            Console.WriteLine($"Instalando o aplicativo {nomeApp} no Iphone..");
+        }
+    }
+}
+```
+
+### Nokia.cs
+
+* Implementando Herança da classe "Smartphone" e adicionado override no método "InstalarAplicativo".
+
+```csharp namespace DesafioPOO.Models
+{
+    // TODO: Herdar da classe "Smartphone"
+    public class Nokia : Smartphone
+    {
+        // TODO: Sobrescrever o método "InstalarAplicativo"
+        public Nokia(string numero, string modelo, string imei, int memoria) : base (numero, modelo, imei, memoria)
+        {
+            
+        }
+        public override void InstalarAplicativo(string nomeApp)
+        {
+            Console.WriteLine($"Instalando o aplicativo {nomeApp} no Nokia..");
+        }
+    }
+}
+```
+
+### Smartphone.cs
+
+* Implementado propriedades de acordo com o diagrama e adicionado os parâmetros do contrutor para as propriedades.
+
+```csharp namespace DesafioPOO.Models
+{
+    public abstract class Smartphone
+    {
+        public string Numero { get; set; }
+        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        public string Modelo { get; set; }
+        public string Imei { get; set; }
+        public int Memoria { get; set; }
+
+        public Smartphone(string numero, string modelo, string imei, int memoria)
+        {
+            Numero = numero;
+            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            Imei = imei;
+            Memoria = memoria;
+        }
+
+        public void Ligar()
+        {
+            Console.WriteLine("Ligando...");
+        }
+
+        public void ReceberLigacao()
+        {
+            Console.WriteLine("Recebendo ligação...");
+        }
+
+        public abstract void InstalarAplicativo(string nomeApp);
+    }
+}
+
+```
+
+### Program.CS
+
+* Código usado para teste conforme o esperado pelo que foi proposto no projeto.
+
+```csharp using DesafioPOO.Models;
+
+// TODO: Realizar os testes com as classes Nokia e Iphone
+Console.WriteLine("Smartphone Nokia:");
+Smartphone nokia = new Nokia(numero: "654321", modelo: "1100", imei: "12121212", memoria: 2);
+nokia.Ligar();
+nokia.InstalarAplicativo("Whatsapp");
+
+Console.WriteLine("\n");
+
+Console.WriteLine("Smartphone Iphone:");
+Smartphone iphone = new Iphone(numero: "456789", modelo: "XS", imei: "45454545", memoria: 128);
+iphone.ReceberLigacao();
+iphone.InstalarAplicativo("Telegram");
